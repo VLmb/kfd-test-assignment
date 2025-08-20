@@ -10,14 +10,20 @@ public class Book {
     private final String isbn;
     private final String name;
     private final String author;
+    private final String genre;
     private final String dateOfPublication;
 
-    public Book(String isbn, String name, String author, String dateOfPublication) {
+    public Book(String isbn, String name, String author, String dateOfPublication, String genre) {
 //        this.id = bookCounter++;
         this.isbn = isbn;
         this.name = name;
         this.author = author;
+        this.genre = genre;
         this.dateOfPublication = dateOfPublication;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 
     public String getIsbn() {

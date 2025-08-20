@@ -1,10 +1,9 @@
 package user;
 
+import book.Book;
 import book.BookLoan;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public abstract class User {
 
@@ -45,6 +44,10 @@ public abstract class User {
 
     public boolean canBorrowMore() {
         return borrowedBooks.size() < getMaxBooks();
+    }
+
+    public List<BookLoan> getBorrowedBooks() {
+        return new ArrayList<BookLoan>(borrowedBooks);
     }
 
     @Override
