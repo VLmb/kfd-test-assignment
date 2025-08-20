@@ -26,7 +26,7 @@ A working console application that manages:
 
 ### ✅ **OOP Understanding**
 - Different user types with different behavior
-- Proper inheritance (User → Student/Faculty/Guest)
+- Proper inheritance (user → Student/Faculty/Guest)
 - Basic encapsulation (private fields, public methods)
 
 ### ✅ **Data Structure Choices**
@@ -60,36 +60,45 @@ A working console application that manages:
 Use these as guidance - don't copy-paste, but understand the structure:
 
 ### Core Interfaces
+
 ```java
+import book.Book;
+
 // What your library system should be able to do
 public interface LibraryOperations {
-    // Book management
+    // book.Book management
     void addBook(String title, String author, String isbn, String genre);
+
     boolean removeBook(String isbn);
+
     Book findBook(String isbn);
+
     List<Book> searchBooks(String query);
-    
-    // User management
+
+    // user management
     void registerUser(String name, String userId, String email, UserType type);
-    User findUser(String userId);
-    
+
+    user findUser(String userId);
+
     // Borrowing operations
     boolean borrowBook(String userId, String isbn);
+
     boolean returnBook(String userId, String isbn);
+
     List<BorrowingRecord> getOverdueBooks();
 }
 ```
 
 ### Basic Class Structure
 ```java
-// Abstract User class - implement with inheritance
-public abstract class User {
+// Abstract user class - implement with inheritance
+public abstract class user {
     protected String name;
     protected String userId;
     protected String email;
     protected List<String> borrowedBooks;
     
-    public User(String name, String userId, String email) {
+    public user(String name, String userId, String email) {
         this.name = name;
         this.userId = userId;
         this.email = email;
@@ -109,7 +118,7 @@ public abstract class User {
 }
 
 // Example implementation
-public class Student extends User {
+public class Student extends user {
     public Student(String name, String userId, String email) {
         super(name, userId, email);
     }
@@ -128,43 +137,46 @@ public class Student extends User {
 ```
 
 ### Data Structure Usage
+
 ```java
+import book.Book;
+
 public class Library implements LibraryOperations {
     // Use HashMap for fast lookup by key
-    private Map<String, Book> books;      // ISBN -> Book
-    private Map<String, User> users;      // UserID -> User
-    
+    private Map<String, Book> books;      // ISBN -> book.Book
+    private Map<String, user> users;      // UserID -> user
+
     // Use List for ordered collections
     private List<BorrowingRecord> borrowingHistory;
-    
+
     // Use Set for unique collections
     private Set<String> genres;
-    
+
     public Library() {
         books = new HashMap<>();           // O(1) book lookup
         users = new HashMap<>();           // O(1) user lookup
         borrowingHistory = new ArrayList<>(); // Chronological order
         genres = new HashSet<>();          // Unique genres only
     }
-    
+
     @Override
     public boolean borrowBook(String userId, String isbn) {
-        User user = users.get(userId);     // Fast lookup
+        user user = users.get(userId);     // Fast lookup
         Book book = books.get(isbn);       // Fast lookup
-        
+
         // Validation logic
         if (user == null || book == null) return false;
         if (!book.isAvailable()) return false;
         if (!user.canBorrow()) return false;
-        
+
         // Process borrowing
         book.setAvailable(false);
         user.getBorrowedBooks().add(isbn);
         borrowingHistory.add(new BorrowingRecord(user, book, LocalDate.now()));
-        
+
         return true;
     }
-    
+
     // Implement other methods...
 }
 ```
@@ -192,8 +204,8 @@ public class LibraryConsole {
     
     private void showMenu() {
         System.out.println("\n=== Library Management ===");
-        System.out.println("1. Book Management");
-        System.out.println("2. User Management");
+        System.out.println("1. book.Book Management");
+        System.out.println("2. user Management");
         System.out.println("3. Borrowing Operations");
         System.out.println("0. Exit");
     }
