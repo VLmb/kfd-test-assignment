@@ -27,6 +27,8 @@ public abstract class User {
 
     public abstract int getMaxDays();
 
+    public abstract double getDailyFine();
+
     public boolean borrowBook(BookLoan bookLoan) {
         if (borrowedBooks.size() >= getMaxBooks()) return false;
         borrowedBooks.add(bookLoan);
