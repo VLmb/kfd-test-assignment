@@ -81,4 +81,16 @@ public class BookItem {
     public String getIsbn() {
         return book.getIsbn();
     }
+
+    @Override
+    public String toString() {
+        return "BookItem{" +
+                "id=" + id +
+                ", book=" + book +
+                ", isAvailable=" + isAvailable +
+                ", user=" + user +
+                ", borrowDate=" + borrowDate +
+                ", dueDate=" + dueDate +
+                '}';
+    }
 }

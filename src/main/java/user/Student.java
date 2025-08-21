@@ -31,4 +31,15 @@ public class Student extends User {
     public double getDailyFine() {
         return 0.2;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + super.getUserId() + '\'' +
+                "university='" + university + '\'' +
+                "firstName='" + super.getFirstName() + '\'' +
+                "lastName='" + super.getLastName() + '\'' +
+                "email='" + super.getEmail() + '\'' +
+                '}';
+    }
 }

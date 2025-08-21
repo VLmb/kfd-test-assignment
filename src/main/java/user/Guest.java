@@ -20,4 +20,14 @@ public class Guest extends User{
     public double getDailyFine() {
         return 0.3;
     }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "id='" + super.getUserId() + '\'' +
+                "firstName='" + super.getFirstName() + '\'' +
+                "lastName='" + super.getLastName() + '\'' +
+                "email='" + super.getEmail() + '\'' +
+                '}';
+    }
 }
