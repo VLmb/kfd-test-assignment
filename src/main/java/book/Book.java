@@ -2,19 +2,22 @@ package book;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
+
+/**
+* Класс содержит метаинформацию о конкретной книге
+ */
 
 public class Book {
 
-//    private static int bookCounter = 1;
-//    private final int id;
     private final String isbn;
     private final String name;
     private final String author;
     private final String genre;
     private final String dateOfPublication;
 
+
     public Book(String isbn, String name, String author, String dateOfPublication, String genre) {
-//        this.id = bookCounter++;
         this.isbn = isbn;
         this.name = name;
         this.author = author;
@@ -46,11 +49,11 @@ public class Book {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(name, book.name) && Objects.equals(author, book.author);
+        return Objects.equals(getIsbn(), book.getIsbn());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, author);
+        return Objects.hashCode(getIsbn());
     }
 }

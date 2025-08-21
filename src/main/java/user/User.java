@@ -1,18 +1,18 @@
 package user;
 
-import book.Book;
-import book.BookLoan;
+import book.BookItem;
+import exceptions.UserCantBorrowMore;
 
 import java.util.*;
 
 public abstract class User {
 
-    protected static int userCounter = 1;
-    protected final int userId;
-    protected final String firstName;
-    protected final String lastName;
-    protected String email;
-    protected Set<BookLoan> borrowedBooks;
+    private static int userCounter = 1;
+    private final int userId;
+    private final String firstName;
+    private final String lastName;
+    private String email;
+    private Set<BookItem> borrowedBooks;
 
     public User(String firstName, String lastName, String email) {
         this.userId = userCounter++;
@@ -28,14 +28,14 @@ public abstract class User {
 
     public abstract double getDailyFine();
 
-    public boolean borrowBook(BookLoan bookLoan) {
-        if (borrowedBooks.size() >= getMaxBooks()) return false;
-        borrowedBooks.add(bookLoan);
+    public boolean borrowBook(BookItem bookItem) throws UserCantBorrowMore {
+        if (borrowedBooks.size() >= getMaxBooks()) throw new UserCantBorrowMore();
+        borrowedBooks.add(bookItem);
         return true;
     }
 
-    public boolean returnBook(BookLoan bookLoan) {
-        return borrowedBooks.remove(bookLoan);
+    public boolean returnBook(BookItem bookItem) {
+        return borrowedBooks.remove(bookItem);
     }
 
     public int getBorrowedCount() {
@@ -46,8 +46,8 @@ public abstract class User {
         return borrowedBooks.size() < getMaxBooks();
     }
 
-    public List<BookLoan> getBorrowedBooks() {
-        return new ArrayList<BookLoan>(borrowedBooks);
+    public List<BookItem> getBorrowedBooks() {
+        return new ArrayList<BookItem>(borrowedBooks);
     }
 
     @Override
@@ -60,5 +60,21 @@ public abstract class User {
     @Override
     public int hashCode() {
         return Objects.hashCode(userId);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }
