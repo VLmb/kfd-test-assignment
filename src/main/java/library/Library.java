@@ -48,6 +48,14 @@ public class Library {
         return manager.findBooksByAuthor(author);
     }
 
+    public List<Book> findBooksByGenre(String author) throws BookNotFoundException {
+        return manager.findBooksByGenre(author);
+    }
+
+    public List<BookItem> findBookItemsByIsbn(String isbn) throws BookNotFoundException {
+        return manager.findBookItemsByIsbn(isbn);
+    }
+
     public void registerUser(User user) throws UserNameAlreadyExistsException, UserEmailAlreadyExistsException {
         manager.registerUser(user);
     }
@@ -90,5 +98,17 @@ public class Library {
 
     public List<BookItem> getOverdueBookItems() {
         return service.getOverdueBookItems();
+    }
+
+    public List<BookItem> getOverdueBookItemsByUser(int userId) throws UserNotFoundException {
+        return service.getOverdueBookItemsByUser(userId);
+    }
+
+    public double getDebtForBook(int userId, String isbn) throws UserNotFoundException, BookNotFoundException {
+        return service.getDebtForBook(userId, isbn);
+    }
+
+    public double getTotalDebt(int userId) throws UserNotFoundException {
+        return service.getTotalDebt(userId);
     }
 }

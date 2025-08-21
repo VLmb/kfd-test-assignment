@@ -34,12 +34,11 @@ public class Faculty extends User {
 
     @Override
     public String toString() {
-        return "Faculty{" +
-                "id='" + super.getUserId() + '\'' +
-                "university='" + university + '\'' +
-                "firstName='" + super.getFirstName() + '\'' +
-                "lastName='" + super.getLastName() + '\'' +
-                "email='" + super.getEmail() + '\'' +
-                '}';
+        return "Faculty: " +
+                " id='" + super.getUserId() + '\'' +
+                ", university='" + university + '\'' +
+                ", firstName='" + super.getFirstName() + '\'' +
+                ", lastName='" + super.getLastName() + '\'' +
+                ", email='" + super.getEmail() + '\'';
     }
 }

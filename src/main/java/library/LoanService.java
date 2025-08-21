@@ -70,9 +70,36 @@ public class LoanService implements LoanServiceOperations {
     }
 
     @Override
+    public List<BookItem> getOverdueBookItemsByUser(int userId) throws UserNotFoundException {
+        User user = manager.findUserById(userId);
+        return user.getBorrowedBooks().stream().filter(BookItem::isOverdue).toList();
+    }
+
+    @Override
     public List<BookItem> getBorrowedBooksByUser(int userId) throws UserNotFoundException {
         User user = manager.findUserById(userId);
         return user.getBorrowedBooks();
+    }
+
+    @Override
+    public double getTotalDebt(int userId) throws UserNotFoundException {
+        User user = manager.findUserById(userId);
+        double totalDebt = 0.0;
+
+        for (BookItem bookItem: user.getBorrowedBooks()) {
+            if (bookItem.isOverdue()) {
+                totalDebt += bookItem.getOverdueDays() * user.getDailyFine();
+            }
+        }
+
+        return totalDebt;
+    }
+
+    @Override
+    public double getDebtForBook(int userId, String isbn)  throws UserNotFoundException, BookNotFoundException {
+        User user = manager.findUserById(userId);
+
+        return user.findBorrowedBook(isbn).getOverdueDays() * user.getDailyFine();
     }
 
 }

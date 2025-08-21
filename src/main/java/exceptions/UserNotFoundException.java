@@ -2,6 +2,6 @@ package exceptions;
 
 public class UserNotFoundException extends Exception {
     public UserNotFoundException() {
-        super("User was not found.");
+        super("[ERROR] User was not found.");
     }
 }

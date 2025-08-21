@@ -1,6 +1,7 @@
 package user;
 
 import book.BookItem;
+import exceptions.BookNotFoundException;
 import exceptions.UserCantBorrowMore;
 
 import java.util.*;
@@ -12,14 +13,14 @@ public abstract class User {
     private final String firstName;
     private final String lastName;
     private String email;
-    private Set<BookItem> borrowedBooks;
+    private Map<String, BookItem> borrowedBooks;
 
     public User(String firstName, String lastName, String email) {
         this.userId = userCounter++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.borrowedBooks = new HashSet<>();
+        this.borrowedBooks = new HashMap<>();
     }
 
     public abstract int getMaxBooks();
@@ -30,12 +31,12 @@ public abstract class User {
 
     public boolean borrowBook(BookItem bookItem) throws UserCantBorrowMore {
         if (borrowedBooks.size() >= getMaxBooks()) throw new UserCantBorrowMore();
-        borrowedBooks.add(bookItem);
+        borrowedBooks.put(bookItem.getIsbn(), bookItem);
         return true;
     }
 
-    public boolean returnBook(BookItem bookItem) {
-        return borrowedBooks.remove(bookItem);
+    public BookItem returnBook(BookItem bookItem) {
+        return borrowedBooks.remove(bookItem.getIsbn());
     }
 
     public int getBorrowedCount() {
@@ -47,7 +48,14 @@ public abstract class User {
     }
 
     public List<BookItem> getBorrowedBooks() {
-        return new ArrayList<BookItem>(borrowedBooks);
+        return new ArrayList<BookItem>(borrowedBooks.values());
+    }
+
+    public BookItem findBorrowedBook(String isbn) throws BookNotFoundException {
+        if (borrowedBooks.containsKey(isbn)) {
+            return borrowedBooks.get(isbn);
+        }
+        throw new BookNotFoundException();
     }
 
     @Override
@@ -80,11 +88,10 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
+        return "User: " +
+                " userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'';
     }
 }

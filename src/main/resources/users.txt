@@ -1,0 +1,5 @@
+STUDENT,Alexey,Ivanov,alexey.ivanov@gmail.com,MEPhI
+STUDENT,Sergey,Petrov,sergey.petrov@gmail.com,MIPT
+FACULTY,Olga,Sidorova,olga.sidorova@gmail.com,MEPhI
+FACULTY,Dmitry,Volkov,dmitry.volkov@gmail.com,Moscow State University
+GUEST,Elena,Kuznetsova,elena.kuznetsova@gmail.com

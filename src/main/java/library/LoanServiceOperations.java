@@ -15,6 +15,11 @@ public interface LoanServiceOperations {
 
     List<BookItem> getOverdueBookItems();
 
+    List<BookItem> getOverdueBookItemsByUser(int userId) throws UserNotFoundException;
+
     List<BookItem> getBorrowedBooksByUser(int userId) throws UserNotFoundException;
 
+    double getTotalDebt(int userId) throws UserNotFoundException;
+
+    double getDebtForBook(int userId, String isbn) throws UserNotFoundException, BookNotFoundException;
 }

@@ -23,11 +23,10 @@ public class Guest extends User{
 
     @Override
     public String toString() {
-        return "Guest{" +
-                "id='" + super.getUserId() + '\'' +
-                "firstName='" + super.getFirstName() + '\'' +
-                "lastName='" + super.getLastName() + '\'' +
-                "email='" + super.getEmail() + '\'' +
-                '}';
+        return "Guest: " +
+                " id='" + super.getUserId() + '\'' +
+                ", firstName='" + super.getFirstName() + '\'' +
+                ", lastName='" + super.getLastName() + '\'' +
+                ", email='" + super.getEmail() + '\'';
     }
 }

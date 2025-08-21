@@ -3,6 +3,7 @@ package book;
 import user.User;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 /**
@@ -66,6 +67,10 @@ public class BookItem {
         return !isAvailable && LocalDate.now().isAfter(dueDate);
     }
 
+    public int getOverdueDays() {
+        return (int)ChronoUnit.DAYS.between(dueDate, LocalDate.now());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -84,13 +89,16 @@ public class BookItem {
 
     @Override
     public String toString() {
-        return "BookItem{" +
+        return "BookItem: " +
                 "id=" + id +
-                ", book=" + book +
+                ", name of book: "  + book.getName() +
                 ", isAvailable=" + isAvailable +
-                ", user=" + user +
-                ", borrowDate=" + borrowDate +
-                ", dueDate=" + dueDate +
-                '}';
+                ", userId=" + ((user != null) ? user.getUserId() : "none") +
+                ", borrowDate=" + ((borrowDate != null) ? borrowDate : "none") +
+                ", dueDate=" + ((dueDate != null) ? dueDate : "none");
+    }
+
+    public Book getBook() {
+        return book;
     }
 }

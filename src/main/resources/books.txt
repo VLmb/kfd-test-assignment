@@ -1,0 +1,14 @@
+978-0140449266,War and Peace,Leo Tolstoy,1869,Classic
+978-0140449242,Anna Karenina,Leo Tolstoy,1878,Classic
+978-0140449181,Crime and Punishment,Fyodor Dostoevsky,1866,Classic
+978-0140449334,The Brothers Karamazov,Fyodor Dostoevsky,1880,Classic
+978-0140447934,The Master and Margarita,Mikhail Bulgakov,1967,Classic
+978-0140449075,Fathers and Sons,Ivan Turgenev,1862,Classic
+978-0137314918,Spring Boot: Up and Running,Mark Heckler,2021,Programming
+978-0132350884,Clean Code,Robert C. Martin,2008,Programming
+978-0261103573,The Lord of the Rings,J.R.R. Tolkien,1954,Fantasy
+978-0553386790,A Game of Thrones,George R.R. Martin,1996,Fantasy
+978-0451524935,1984,George Orwell,1949,Dystopia
+978-0449911549,All Quiet on the Western Front,Erich Maria Remarque,1929,Classic
+978-0060883287,One Hundred Years of Solitude,Gabriel Garcia Marquez,1967,Magical Realism
+978-0307474278,The Da Vinci Code,Dan Brown,2003,Thriller
