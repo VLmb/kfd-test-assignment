@@ -70,7 +70,7 @@ public class ConsoleUI {
         System.out.println("3. Remove a book by ISBN");
         System.out.println("4. Show all books in the library");
         System.out.println("5. Show copies of the book by ISBN");
-        System.out.println("6. Show all books by name");
+        System.out.println("6. Search book by name");
         System.out.println("7. Show all books by author");
         System.out.println("8. Show all books by genre");
         System.out.print("Enter your choice: ");
@@ -88,6 +88,7 @@ public class ConsoleUI {
                     break;
                 case 3:
                     removeBookByIsbn();
+                    break;
                 case 4:
                     listAllBooks();
                     break;

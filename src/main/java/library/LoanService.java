@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Управляет процессами выдачи, возврата книг, отслеживания просрочек и расчета долгов.
+ */
+
 public class LoanService implements LoanServiceOperations {
 
     private final LibraryManager manager;

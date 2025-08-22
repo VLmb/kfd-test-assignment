@@ -8,6 +8,10 @@ import user.User;
 import java.security.Provider;
 import java.util.List;
 
+/**
+ * Основной класс для управления библиотекой, включая операции с книгами, пользователями и выдачей.
+ */
+
 public class Library {
 
     private String name;
@@ -48,8 +52,8 @@ public class Library {
         return manager.findBooksByAuthor(author);
     }
 
-    public List<Book> findBooksByGenre(String author) throws BookNotFoundException {
-        return manager.findBooksByGenre(author);
+    public List<Book> findBooksByGenre(String genre) throws BookNotFoundException {
+        return manager.findBooksByGenre(genre);
     }
 
     public List<BookItem> findBookItemsByIsbn(String isbn) throws BookNotFoundException {

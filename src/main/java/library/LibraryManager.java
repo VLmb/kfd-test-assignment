@@ -7,6 +7,10 @@ import user.User;
 
 import java.util.*;
 
+/**
+ * Выполняет основные операции по добавлению, удалению и поиску книг и пользователей в библиотеке.
+ */
+
 public class LibraryManager implements LibraryManagerOperations {
 
     private Map<String, List<BookItem>> bookItems;
