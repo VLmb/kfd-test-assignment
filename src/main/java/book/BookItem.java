@@ -68,7 +68,8 @@ public class BookItem {
     }
 
     public int getOverdueDays() {
-        return (int)ChronoUnit.DAYS.between(dueDate, LocalDate.now());
+        int days = (int)ChronoUnit.DAYS.between(dueDate, LocalDate.now());
+        return days > 0 ? days : 0;
     }
 
     @Override
